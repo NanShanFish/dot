@@ -1,0 +1,64 @@
+[manager]
+ratio        = [1,2,4]
+show_symlink = false
+
+[preview]
+tab_szie      = 2
+max_width     = 600
+max_height    = 900
+
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "unix"},
+	{ run = 'code "%*"', block = true, for = "windows"},
+]
+extract = [
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open", for = "unix" },
+	{ run = 'start "%*"', desc = "Open", for = "windows" },
+]
+browser = [
+	{ run = 'vivaldi "$@"', desc = "open in browser", for = "unix"},
+	{ run = 'vivaldi "%*"', desc = "open in browser", for = "windows"},
+]
+vscode = [
+	{ run = 'code "$@"', desc = "open with vscode", for = "unix"},
+	{ run = 'code "%*"', desc = "open with vscode", for = "windows"},
+]
+play = [
+	{ run = 'vlc "$1"', desc = "use vlc play", for = "unix"},
+]
+img_play = [
+	{ run = 'feh "$1"', desc = "play in feh", for = "unix" }
+]
+fallback = [
+	{ run = 'xdg-open "$@"', orphan = true, desc = "xdg-open" , for = "unix" },
+]
+
+[open]
+rules = [
+	{ name = "*.html", use = [ "browser","vscode"] },
+	{ name = "*.code-workspace", use = [ "vscode","edit"] },
+	{ name = "*.zip", use = "extract" },
+	{ mime = "text/*", use = [ "edit", "vscode" ] },
+	{ mime = "image/*", use = "img_play"},
+	{ mime = "video/*", use = "play" },
+	{ mime = "inode/empty",use = "edit"},
+
+	{ mime = "*", use = ["fallback","edit"]}
+]
+
+[plugin]
+prepend_previewers = [
+	{ mime = "application/*zip",            run = "ouch" },
+	{ mime = "application/x-tar",           run = "ouch" },
+	{ mime = "application/x-bzip2",         run = "ouch" },
+	{ mime = "application/x-7z-compressed", run = "ouch" },
+	{ mime = "application/x-rar",           run = "ouch" },
+	{ mime = "application/x-xz",            run = "ouch" },
+	{ name = "*.pdf", run = "noop"},
+	{ mime = "image/*", run = "noop"},
+]

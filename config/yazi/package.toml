@@ -1,0 +1,19 @@
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "ce6fb75"
+hash = "ed6c185514109d7c5463f609282b220c"
+
+[[plugin.deps]]
+use = "Ape/smart-enter"
+rev = "7b84c89"
+hash = "43eb1a1f2291795fb5b0b2ce1206ebee"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "5186af7"
+hash = "2391805528b59d562a51f9b33f4a8236"
+
+[[flavor.deps]]
+use = "bennyyip/gruvbox-dark"
+rev = "b4cc9f2"
+hash = "f44c42bcbed3c8564100e45e2fe3649a"

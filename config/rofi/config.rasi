@@ -1,0 +1,15 @@
+@theme "/home/shan/.config/rofi/themes/nord-oneline.rasi"
+configuration{
+    modi: "run,drun,window";
+    lines: 5;
+    terminal: "st";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "Apps";
+    kb-remove-to-eol: "";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-up: "Control+k";
+    kb-row-down: "Control+j";
+    kb-cancel: "Escape,Control+q";
+}

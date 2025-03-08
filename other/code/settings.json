@@ -1,0 +1,162 @@
+{
+    "workbench.iconTheme": "catppuccin-perfect-frappe", // 图标主题
+    "window.menuBarVisibility": "toggle",                   // 左上角菜单栏
+    "editor.fontLigatures": true,                           // 开启连字
+    "editor.unicodeHighlight.ambiguousCharacters": false,   // 不高亮unicode字符
+    "editor.bracketPairColorization.enabled": true,         // 控制是否对括号着色
+    "editor.guides.bracketPairs": true,                     // 启用括号指导线
+    "editor.fontFamily": "'Maple Mono NF CN'",              // 字体
+    "editor.fontSize": 14,
+    "workbench.activityBar.location": "top",                // 侧边栏位置
+	"workbench.tree.indent": 24,                            // 文件管理器缩进
+    "editor.tabSize": 4,                                    // 缩进长度
+	"editor.insertSpaces": true,                            // 缩进时插入空格
+    "editor.cursorStyle": "underline",                      // 光标样式
+	"editor.smoothScrolling": true,                         // 平滑滚动
+    "editor.cursorBlinking": "solid",                       // 光标不闪烁
+    "editor.cursorSurroundingLines": 13,
+    "editor.renderWhitespace": "trailing",                  // 可视尾随空格
+    "editor.minimap.size": "fit",                           // 小地图大小
+    "editor.minimap.autohide": true,                        // 小地图自动隐藏
+    "editor.semanticHighlighting.enabled": true,            // 语义高亮
+    "editor.semanticTokenColorCustomizations": {            // 语义高亮自定义
+        "enabled": true,
+        "rules": {
+            "*.abstract": { "fontStyle": "italic" },                   // 抽象符号
+            "readonly": "#4FC1FF",                                   // 只读量等效为宏
+            "*.static": { "fontStyle": "bold" },                       // 静态量（静态变量，静态函数）
+            "macro": { "foreground": "#4FC1FF" },                    // 宏
+            "method": { "fontStyle": "underline" },                    // 成员函数
+            "namespace": { "foreground": "#00D780" },                // 命名空间
+            "parameter": { "foreground": "#C8ECFF" },                // 函数参数
+            "parameter.readonly": { "foreground": "#7BD1FF" },       // 只读的函数参数
+            "property": { "fontStyle": "underline", "foreground": "#C8ECFF" },      // 成员变量，似乎需要clangd12以上
+            "typeParameter": "#31A567",                              // 类型参数
+            "comment": "#767BA6"                                     // 未启用的宏
+        }
+    },
+    // 括号颜色
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {
+            "editorBracketHighlight.foreground1": "#9CDCFE",
+            "editorBracketHighlight.foreground2": "#F3FD00",
+            "editorBracketHighlight.foreground3": "#F47D9F",
+            "editorBracketHighlight.foreground4": "#A5ADFE"
+        }
+    },
+    // 80,120 行提示
+    "editor.rulers": [
+        { "column": 80, "color": "#9CDCFE" },
+        { "column": 120, "color": "#A5ADFE" }
+    ],
+
+    ////////////////////////////////////
+    //           OPTION
+    ////////////////////////////////////
+    "debug.console.acceptSuggestionOnEnter": "on",  // 在控制台中接受建议
+    "debug.internalConsoleOptions": "neverOpen",    // 何时打开内部控制台
+    "editor.acceptSuggestionOnEnter": "off",        // 不使用enter接受键议
+    "editor.autoClosingOvertype": "always",         // 控制编辑器应当自动改写左引号或右引号
+    "editor.detectIndentation": false,              // 默认使用vscode缩进方式
+    "editor.formatOnPaste": true,                   // 粘贴时格式化文件
+    "editor.inlineSuggest.enabled": true,           // 在编辑器中自动显示内联建议
+    "editor.parameterHints.enabled": true,          // 是否在输入时显示含有参数文档和类型信息的小面板
+    "editor.quickSuggestions": {                    // 何时在键入代码时自动显示建议
+        "comments": false,
+        "other": true,
+        "strings": false
+    },
+    "editor.quickSuggestionsDelay": 0,              // 控制显示快速建议前的等待时间（毫秒）
+    "editor.snippetSuggestions": "bottom",          // 代码片段建议置于其他建议之下
+    "editor.stickyTabStops": true,                  // 使用空格缩进时模拟制表符的行为，可以方便对齐
+    "editor.suggest.insertMode": "replace",         // 建议的接受方式
+    "editor.suggest.localityBonus": true,           // 控制排序时是否提高靠近光标的词语的优先级
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.suggest.showStatusBar": false,          // 控制建议小部件底部的状态栏可见
+    "editor.suggestOnTriggerCharacters": true,      // 控制在键入触发字符后是否自动显示建议
+    "editor.suggestSelection": "first",             // 始终预先选择第一个建议
+    "explorer.confirmDelete": false,                // 把文件删除时无需确认
+    "explorer.confirmDragAndDrop": false,           // 移动文件时无需确认
+    "explorer.incrementalNaming": "smart",          // 粘贴同名文件时的重命名方式
+    "extensions.ignoreRecommendations": true,       // 忽略扩展建议的通知
+    "files.autoSaveDelay": 1000,                    // 自动保存的等待时间（毫秒）
+    "files.autoSave": "afterDelay",                 // 自动保存方式
+    "search.showLineNumbers": true,                 // 显示搜索结果所在行号
+    "search.smartCase": true,                       // 当搜索词为小写时，则不区分大小写进行搜索
+    "terminal.integrated.gpuAcceleration": "on",    // 集成终端使用GPU加速
+    "workbench.startupEditor": "none",              // 在没有从上一个会话恢复出信息的情况下，在启动时不打开编辑器
+    "workbench.view.alwaysShowHeaderActions": true, // 显示视图头部的操作项
+    "editor.largeFileOptimizations": false,
+    "window.zoomLevel": 1,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "pwsh": {
+            "path": [ "D:\\SoftWare\\Scoop\\apps\\pwsh\\current\\pwsh.exe" ],
+            "args": [],
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        }
+    },
+	"terminal.integrated.defaultProfile.windows": "pwsh",
+
+    ////////////////////////////////////
+    //           FILE TYPE
+    ////////////////////////////////////
+    "[markdown]": {
+        "editor.wordWrap": "on",
+    },
+    "[c]": {
+        "editor.tabSize": 8,
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave": true
+    },
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer",
+		"editor.formatOnSave": true,
+	},
+
+    ////////////////////////////////////
+    //           PLUGINS
+    ////////////////////////////////////
+    // VIM
+    "vim.smartRelativeLine": true,
+    "vim.history": 200,
+    "vim.leader": " ",
+    "vim.sneak": true,
+    "vim.surround": true,
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [ "s" ],
+            "after": [ "<leader>", "<leader>", "s" ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "<leader>", "e" ],
+            "commands": [ "workbench.view.explorer" ],
+            "when": "textInputFocus && !editorReadonly"
+        }
+    ],
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-w>": false,
+        "<C-e>": false,
+        "<C-q>": false,
+    },
+    // Live Server
+    "liveServer.settings.CustomBrowser": "vivaldi",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "D:\\SoftWare\\Vivaldi\\Application\\vivaldi.exe",
+    // Clang-format
+    "clang-format.style": "file",
+    "clang-format.assumeFilename": "C:\\Users\\shan\\.clang-format",
+    "clang-format.executable": "D:\\SoftWare\\Scoop\\apps\\mingw-winlibs-llvm-ucrt\\current\\bin\\clang-format",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+}                                                                                                                            
