@@ -1,0 +1,5 @@
+#!/bin/bash
+cd
+export LANG=zh_CN.UTF-8
+export XDG_SESSION_TYPE=X11
+exec dwm

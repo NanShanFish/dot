@@ -1,8 +1,0 @@
-dwm ~/
-other/.snipaste ~/
-other/.xinitrc ~/
-other/scr ~/
-other/.gitconfig.home ~/.gitconfig
-other/code/settings.json ~/.config/Code/User
-other/code/keybindings.json ~/.config/Code/User
-other/30-touchpad.conf /usr/share/X11/xorg.conf.d/30-touchpad.conf

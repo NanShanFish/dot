@@ -1,25 +1,27 @@
 # dwm
-/dwm/statusbar/temp
+/extra/dwm/statusbar/temp
+
+## st
+/extra/st/*.o
+/extra/st/st
 
 # .config
 ## Neovim
-/config/nvim
+/home/nvim
+/home/LazyVim
 
 ## Fish
-/config/fish/fish_variables
+/home/fish/dot-config/fish/fish_variables
 
 ## Tmux
-/config/tmux/*
-!/config/tmux/tmux.conf
-
+/home/tmux/dot-config/tmux/*
+!/home/tmux/dot-config/tmux/tmux.conf
 
 # other
 ## snipaste
-/other/.snipaste/*
-!/other/.snipaste/config.ini
 
-## st
-/other/st/*.o
+/home/snipaste/dot-snipaste/*
+!/home/snipaste/dot-snipaste/config.ini
 
 ## scr
-/other/scr/pwd
+/home/scr/scr/pwd

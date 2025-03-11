@@ -1,0 +1,85 @@
+[env]
+TERM = "xterm-256color"
+
+[scrolling]
+history = 1000
+
+[colors.primary]
+background = "#1d2125"
+foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[general]
+live_config_reload = false
+
+[font]
+normal = { family = "Maple Mono NF CN", style = "Medium"}
+size = 8
+
+[cursor]
+style = { shape = "beam", blinking = "Never"}
+
+[[hints.enabled]]
+post_processing = true
+action = "Copy"
+persist = false
+mouse.enabled = false
+binding = { key = ".", mods = "Control" }
+regex = "((?:[.\\pL\\pN_\\-@~]+)?(?:/+[.\\pL\\pN_\\-@]+)+)"
+
+[[hints.enabled]]
+command = "xdg-open" # 在 Linux/BSD 上打开链接
+# command = "open" # 在 macOS 上打开链接
+# command = { program = "cmd", args = ["/c", "start", ""] } # 在 Windows 上打开链接
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = ",", mods = "Control" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+[keyboard]
+bindings = [
+	{ key = "Space", mods = "Control|shift", action = "ToggleViMode" },
+	{ key = "[", mods = "Control", action = "ScrollHalfPageUp" },
+	{ key = "]", mods = "Control", action = "ScrollHalfPageDown" },
+]

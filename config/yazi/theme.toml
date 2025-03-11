@@ -1,9 +1,0 @@
-[manager]
-border_symbol = " "
-
-[status]
-sep_left  = { open = "", close = "" }
-sep_right = { open = "", close = "" }
-[flavor]
-use = "gruvbox-dark"
-dark = "gruvbox-dark"
