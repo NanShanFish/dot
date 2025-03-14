@@ -1,0 +1,41 @@
+#SingleInstance, Force
+SendMode Input
+SetWorkingDir, %A_ScriptDir%
+
+#q::SendEvent, !{F4}
+LWin & j::AltTab
+LWin & k::ShiftAltTab
+#Enter::Run "C:\Program Files\Alacritty\alacritty.exe"
+#h::SendEvent, #{Left}
+#l::SendEvent, #{Right}
+#f::Send, {F11}
+
+Activate(t)
+{
+  IfWinActive ahk_exe %t%
+  {
+    WinMinimize
+    return
+  }
+  IfWinExist ahk_exe %t%
+  {
+    WinShow
+    WinActivate
+    return 1
+  }
+  return 0
+}
+
+ActivateAndOpen(t,p)
+{
+  if Activate(t)==0
+  {
+    Run %p%
+    WinActivate
+    return
+  }
+}
+
+#b::ActivateAndOpen("Vivaldi.exe", "D:\SoftWare\Vivaldi\Application\vivaldi.exe")
+#c::ActivateAndOpen("Code.exe","D:\SoftWare\Scoop\apps\vscode\current\Code.exe")
+#n::ActivateAndOpen("Obsidian.exe","D:\SoftWare\Scoop\apps\obsidian\current\Obsidian.exe")
