@@ -2,7 +2,7 @@
 
 # 打印菜单
 call_menu() {
-	echo -e 'pwd\njourney\nbluetooth\nsleep\nhibernate\npoweroff\nreboot\nsh'
+	echo -e 'pwd\njourney\nbluetooth\nsleep\nhibernate\npoweroff\nreboot'
 	# [ "$(sudo docker ps | grep v2raya)" ] && echo ' close v2raya' || echo ' open v2raya'
 	[ "$(ps aux | grep picom | grep -v 'grep\|rofi\|nvim')" ] && echo 'close picom' || echo 'open picom'
 }
@@ -14,10 +14,7 @@ execute_menu() {
 			rofi -p 'passwd' -dmenu| python -c "$(sudo cat $HOME/scr/pwd)" |xargs xdotool type
 			;;
 		'journey')
-            doc_path="$(realpath ~/doc)"
-            d_file="$doc_path/daily/2-daily/$(date "+%Y/%m/%Y-%m-%d").md"
-            test -e "$d_file" || cp "$doc_path/daily/template/Journey.md" "$d_file"
-            cd ~/doc/daily && alacritty -e nvim "$d_file"
+            ~/.local/bin/jy rofi
 			;;
 		'bluetooth')
 			~/scr/bluetooth.sh &
@@ -40,10 +37,13 @@ execute_menu() {
 		'close picom')
 			killall picom
 			;;
-		'sh')
-			notify-send "$(rofi -p 'shell' -dmenu | fish)"
+		*)
+            if [ "$input" != "" ]; then
+                notify-send "$(fish -c "$input")"
+            fi
 			;;
 	esac
 }
 
-execute_menu "$(call_menu | rofi -dmenu -matching prefix -p "shotcut")"
+input="$(call_menu | rofi -dmenu -matching prefix -p "shotcut")"
+execute_menu $input

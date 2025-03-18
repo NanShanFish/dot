@@ -17,7 +17,7 @@ call_todo() {
     pid2=`ps aux | grep 'st -t statusutil_todo' | grep -v grep | awk '{print $2}'`
     mx=`xdotool getmouselocation --shell | grep X= | sed 's/X=//'`
     my=`xdotool getmouselocation --shell | grep Y= | sed 's/Y=//'`
-    kill $pid1 && kill $pid2 || st -t statusutil_todo -g 50x15+$((mx - 200))+$((my + 20)) -c FG -e nvim ~/doc/daily/2-daily/Todo/todo.md
+    kill $pid1 && kill $pid2 || st -t statusutil_todo -g 50x15+$((mx - 200))+$((my + 20)) -c FG -e nvim $XDG_DOCUMENTS_DIR/notes/2-daily/Todo/todo.md
 }
 
 call_journey() {
@@ -25,7 +25,7 @@ call_journey() {
     pid2=`ps aux | grep 'st -t statusutil_daily' | grep -v grep | awk '{print $2}'`
     mx=`xdotool getmouselocation --shell | grep X= | sed 's/X=//'`
     my=`xdotool getmouselocation --shell | grep Y= | sed 's/Y=//'`
-	kill $pid1 && kill $pid2 || st -t statusutil_daily -g 60x40+$((mx - 200))+$((my + 20)) -c float -e nvim ~/doc/daily/2-daily/$(date +"%Y-%m-%d").md
+	kill $pid1 && kill $pid2 || st -t statusutil_daily -g 60x40+$((mx - 200))+$((my + 20)) -c float -e nvim $XDG_DOCUMENTS_DIR/notes/2-daily/$(date +"%Y-%m-%d").md
 }
 
 case $1 in

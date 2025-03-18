@@ -12,6 +12,7 @@ settings() {
   # syndaemon -i 1 -t -K -R -d # 设置使用键盘时触控板短暂失效
   /usr/bin/dunst &
   feh --randomize --bg-fill ~/pic/wallpaper/windows-error.jpg
+  light -S 50
 }
 
 daemons() {

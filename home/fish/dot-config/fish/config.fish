@@ -41,11 +41,10 @@ set -Ux XDG_CACHE_HOME "$HOME/.cache"        # analogous to /var/cache
 set -Ux XDG_DATA_HOME "$HOME/.local/share"   # analogous to /usr/share
 set -Ux DWM "$HOME/dot/extra/dwm"
 
-bind \co '__fzf_find_file'
-bind \cr '__fzf_reverse_isearch'
-### fzf.fish
-# Disable default keybinding
-set -U FZF_DISABLE_KEYBINDINGS 1
+### fzf
+set --export FZF_DEFAULT_OPTS '--bind=ctrl-j:preview-down,ctrl-k:preview-up --cycle --layout=reverse --height=90% --marker="*"'
+bind \co '_fzf_search_directory'
+bind \cr '_fzf_search_history'
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"

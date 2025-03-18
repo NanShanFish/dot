@@ -3155,7 +3155,7 @@ void updatesizehints(Client *c) {
 void updatestatus(void) {
   Monitor *m;
   if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-    strcpy(stext, "^c#50fa7b^^b#21222c^ NSFish ^d^"); // 默认的状态栏文本
+    strcpy(stext, "^c#50fa7b^^b#21222c^ Ciallo～(∠ ·ω< )⌒★ ^d^"); // 默认的状态栏文本
   for (m = mons; m; m = m->next)
     drawbar(m);
   updatesystray();
@@ -3473,15 +3473,15 @@ void my_grid(Monitor *m, uint gappo, uint gappi) {
     c = nexttiled(m->clients);
     cw = m->ww - 2 * gappo;
     ch = m->wh - 2 * gappo;
-    resize(c, m->mx + gappo, m->my + gappo, cw - 2 * c->bw, ch - 2 * c->bw, 0);
+    resize(c, m->wx + gappo, m->wy + gappo, cw - 2 * c->bw, ch - 2 * c->bw, 0);
     return;
   }
   if (n == 2) {
     c = nexttiled(m->clients);
     cw = (m->ww - 2 * gappo - gappi) / 2;
     ch = m->wh - 2 * gappo;
-    resize(c, m->mx + gappo, m->my + gappo, cw - 2 * c->bw, ch - 2 * c->bw, 0);
-    resize(nexttiled(c->next), m->mx + cw + gappo + gappi, m->my + gappo,
+    resize(c, m->wx + gappo, m->wy + gappo, cw - 2 * c->bw, ch - 2 * c->bw, 0);
+    resize(nexttiled(c->next), m->wx + cw + gappo + gappi, m->wy + gappo,
            cw - 2 * c->bw, ch - 2 * c->bw, 0);
     return;
   }

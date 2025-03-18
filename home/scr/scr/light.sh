@@ -8,7 +8,7 @@ update() {
 }
 
 case "$1" in
-    "") update;;
+    ""|L) update;;
     U)
         light -A 5
         update;;

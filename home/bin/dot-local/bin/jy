@@ -1,0 +1,39 @@
+#!/bin/bash
+
+creat-file(){
+    doc_path="$(realpath $XDG_DOCUMENTS_DIR)"
+    d_file="$doc_path/notes/2-daily/$d_file.md"
+    echo $d_file
+    test -e "$d_file" || cp "$doc_path/notes/template/Journey.md" "$d_file"
+}
+
+helpfunc() {
+    echo "NAME"
+    echo  "SYNOPSIS"
+    echo -e "\tjy "
+}
+
+if [ "$1" = "rofi" ]; then
+    d_file="$(date "+%Y/%m/%Y-%m-%d")"
+elif [[ "$1" =~ ^-?[0-9]+$ ]]; then
+    d_file="$(date -d "now $1 days" "+%Y/%m/%Y-%m-%d")"
+elif [[ "$1" =~ ^[0-9]{1,2}-[0-9]{1,2}$ ]]; then
+    current_year="$(date "+%Y")"
+    current_date_diff="$(expr $(date -d "$current_year-$1" "+%s") - $(date "+%s"))"
+
+    if [[ $current_date_diff -lt -15724800 ]]; then
+        current_year="$(( current_year + 1))"
+    elif [[ $current_date_diff -gt 15724800 ]]; then
+        current_year="$(( current_year - 1))"
+    fi
+    d_file="$(date -d "$current_year-$1" "+%Y/%m/%Y-%m-%d")"
+elif [[ "$1" =~ ^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$ ]]; then
+    d_file="$(date -d "$1" "+%Y/%m/%Y-%m-%d")"
+fi
+creat-file
+cd $XDG_DOCUMENTS_DIR/notes
+if [ $1 = "rofi" ]; then
+    alacritty -e nvim $d_file
+else
+    nvim $d_file
+fi

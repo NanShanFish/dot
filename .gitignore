@@ -1,11 +1,12 @@
-# dwm
+# extra
+## dwm
 /extra/dwm/statusbar/temp
 
 ## st
 /extra/st/*.o
 /extra/st/st
 
-# .config
+# home
 ## Neovim
 /home/nvim
 /home/LazyVim
@@ -17,7 +18,6 @@
 /home/tmux/dot-config/tmux/*
 !/home/tmux/dot-config/tmux/tmux.conf
 
-# other
 ## snipaste
 
 /home/snipaste/dot-snipaste/*
@@ -25,3 +25,6 @@
 
 ## scr
 /home/scr/scr/pwd
+
+## bin
+/home/bin/dot-local/bin/tmux-mem-cpu-load

@@ -10,12 +10,12 @@ prepend_keymap = [
 { on = [ "<C-k>" ], run = "seek -10", desc = "Seek up"},
 { on = [ "<C-j>" ], run = "seek 10", desc = "Seek down"},
 { on = [ "<C-w>" ], run = "close", desc = "Close current tab"},
-{ on = [ "g","m" ], run = "cd ~/dot", desc = "Goto dotfile dir" },
-{ on = [ "g","p" ], run = "cd ~/proj", desc = "Goto proj dir" },
-{ on = [ "g","t" ], run = "cd ~/proj/cntest", desc = "Goto test dir" },
+{ on = [ "g","m" ], run = "cd $HOME/dot", desc = "Goto dotfile dir" },
+{ on = [ "g","p" ], run = "cd $HOME/proj", desc = "Goto proj dir" },
+{ on = [ "g","t" ], run = "cd $HOME/proj/cntest", desc = "Goto test dir" },
 { on = [ "g","b" ], run = "cd $XDG_DOCUMENTS_DIR/books", desc = "Goto book dir" },
 { on = [ "g","d" ], run = "cd $XDG_DOWNLOAD_DIR", desc = "Goto download dir" },
-{ on = [ "g","n" ], run = "cd $XDG_DOCUMENTS_DIR/daily", desc="Goto note dir" },
+{ on = [ "g","n" ], run = "cd $XDG_DOCUMENTS_DIR/notes", desc="Goto note dir" },
 { on = [ "C","Z" ], run = "plugin ouch zip", desc="zip" },
 ]
 

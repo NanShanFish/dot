@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	file="/home/shan/doc/daily/2-daily/Todo/todo.md"
+	file="$XDG_DOCUMENTS_DIR/notes/2-daily/Todo/todo.md"
 else
 	file=$1
 fi

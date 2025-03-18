@@ -10,23 +10,18 @@ max_height    = 900
 [opener]
 edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix"},
-	{ run = 'code "%*"', block = true, for = "windows"},
 ]
 extract = [
 	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
-	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open", for = "unix" },
-	{ run = 'start "%*"', desc = "Open", for = "windows" },
 ]
 browser = [
 	{ run = 'vivaldi "$@"', desc = "open in browser", for = "unix"},
-	{ run = 'vivaldi "%*"', desc = "open in browser", for = "windows"},
 ]
 vscode = [
 	{ run = 'code "$@"', desc = "open with vscode", for = "unix"},
-	{ run = 'code "%*"', desc = "open with vscode", for = "windows"},
 ]
 play = [
 	{ run = 'vlc "$1"', desc = "use vlc play", for = "unix"},
