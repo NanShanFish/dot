@@ -14,3 +14,5 @@ elif [ "$mode" = "Disconnect" ]; then
   selection=($(bluetoothctl devices | awk '{print $2,$3}' | rofi -i -p "Disconnect:" -dmenu))
   bluetoothctl disconnect ${selection[0]} && notify-send "BlueTooth" "Buletooth Disconnect from ${selection[1]}"
 fi
+sleep 3
+bash ~/scr/vol.sh

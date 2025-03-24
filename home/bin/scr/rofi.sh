@@ -4,7 +4,7 @@
 call_menu() {
 	echo -e 'pwd\njourney\nbluetooth\nsleep\nhibernate\npoweroff\nreboot'
 	# [ "$(sudo docker ps | grep v2raya)" ] && echo ' close v2raya' || echo ' open v2raya'
-	[ "$(ps aux | grep picom | grep -v 'grep\|rofi\|nvim')" ] && echo 'close picom' || echo 'open picom'
+	[ "$(ps aux | grep picom | grep -v 'grep\|rofi\|v')" ] && echo 'close picom' || echo 'open picom'
 }
 
 # 执行菜单
@@ -20,9 +20,11 @@ execute_menu() {
 			~/scr/bluetooth.sh &
 			;;
 		'sleep')
+            ~/scr/blurlock.sh
 			systemctl suspend &
 			;;
 		'hibernate')
+            ~/scr/blurlock.sh
 			systemctl hibernate &
 			;;
 		'poweroff')
@@ -32,7 +34,7 @@ execute_menu() {
 			reboot
 			;;
 		'open picom')
-			coproc (picom > /dev/null 2>&1)
+			coproc (picom --experimental-backends > /dev/null 2>&1)
 			;;
 		'close picom')
 			killall picom
@@ -46,4 +48,4 @@ execute_menu() {
 }
 
 input="$(call_menu | rofi -dmenu -matching prefix -p "shotcut")"
-execute_menu $input
+execute_menu "$input"

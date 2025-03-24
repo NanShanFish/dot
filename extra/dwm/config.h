@@ -191,8 +191,9 @@ static Key keys[] = {
     /*{ MODKEY|ShiftMask,    XK_b,            tagmon,           {.i = +1} },                super shift b      |  将聚焦窗口移动到另一个显示器 */
 
     /* spawn + SHCMD 执行对应命令 */
-    { MODKEY,              XK_Return, spawn, SHCMD("alacritty ") },                                                               /* super enter      | 打开st终端             */
-    { MODKEY,              XK_space,  spawn, SHCMD("alacritty --class float") },                                                      /* super space      | 打开浮动 st终端        */
+    { MODKEY,              XK_x,      spawn, SHCMD("~/scr/blurlock.sh") },                                                /* super x          | 启动锁屏               */
+    { MODKEY,              XK_Return, spawn, SHCMD("alacritty") },                                                        /* super enter      | 打开 alacritty 终端    */
+    { MODKEY,              XK_space,  spawn, SHCMD("alacritty --class float") },                                          /* super space      | 打开浮动 alacritty 终端*/
     { MODKEY,              XK_e,      spawn, SHCMD("st -e yazi") },                                                       /* super e          | 打开 yazi              */
     { MODKEY,              XK_b,      spawn, SHCMD("vivaldi") },                                                          /* super b          | 打开 vivaldi           */
     { MODKEY,              XK_a,      spawn, SHCMD("dunstctl history-pop") },                                             /* super a          | 查看上一条通知         */

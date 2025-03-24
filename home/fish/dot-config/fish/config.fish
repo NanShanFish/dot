@@ -48,5 +48,6 @@ bind \cr '_fzf_search_history'
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-set -gx PATH "$HOME/.local/bin" $PATH
+
+fish_add_path $HOME/.local/bin
 # pnpm end

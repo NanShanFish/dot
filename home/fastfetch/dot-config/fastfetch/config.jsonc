@@ -22,7 +22,7 @@
 	  {
 		  "type": "kernel",
 		  "key": "󰒔 KERNEL ",
-		  "format": "{1}",
+		  "format": "{1} {2}",
 		  "keyColor": "33"
 	  },
 	  {
