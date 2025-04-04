@@ -15,11 +15,15 @@ Set-Alias -Name v -Value nvim
 Set-Alias -Name lG -Value lazygit
 Set-Alias -Name os -Value fastfetch
 Set-Alias -Name f -Value fy
-Set-Alias -Name gsort -Value $env:SCOOP\shims\sort.exe
+Set-Alias -Name rsort -Value $env:SCOOP\shims\sort.exe
 
 # ===========================================================
 # ENVIRONMENTS
 # ===========================================================
+$pathArray = $env:Path -split ';'
+if ($pathArray[0] -ne "~\.local\bin") {
+	$env:Path = "~\.local\bin;" + $env:Path
+}
 $env:YAZI_FILE_ONE="D:\SoftWare\Scoop\apps\git\current\usr\bin\file.exe"
 $env:FZF_DEFAULT_OPTS="--layout=reverse --height=40%"
 
