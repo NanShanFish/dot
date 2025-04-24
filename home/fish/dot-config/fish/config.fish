@@ -33,7 +33,7 @@ alias ta="tmux a"
 
 ###  ENVIRONMENT VARIABLES  ###
 set -Ux EDITOR /bin/nvim
-set -x BROWSER /bin/vivaldi-stable
+set -Ux BROWSER /bin/vivaldi-stable
 set -Ux XDG_DOWNLOAD_DIR "$HOME/dls"
 set -Ux XDG_DOCUMENTS_DIR "$HOME/doc"
 set -Ux XDG_CONFIG_HOME "$HOME/.config"      # analogous to /etc
@@ -48,6 +48,6 @@ bind \cr '_fzf_search_history'
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+# pnpm end
 
 fish_add_path $HOME/.local/bin
-# pnpm end

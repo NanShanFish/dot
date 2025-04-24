@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -z "$1" ]; then
 	file="$XDG_DOCUMENTS_DIR/notes/2-daily/Todo/todo.md"

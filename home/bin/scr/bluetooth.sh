@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 systemctl status bluetooth || sudo systemctl start bluetooth
 bluetoothctl power on

@@ -76,28 +76,33 @@ create_link() {
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime || log 2 "create symbol-link /etc/localtime failed"
 	hwclock --systohc
 	
+	mkdir -p "/home/$user/.config"
+	mkdir -p "/home/$user/.local/bin"
 	pacman -S stow --needed || log 4 "fail to download stow"
-	cd ~/dot/home
-	mkdir ~/.config/vivaldi/ -p
-	stow -n --verbose=1 -t ~ --dotfiles *
-	cd ~/dot/root
+	cd "/home/$user/dot/home"
+    mkdir "/home/$user/.config/Code/User" -p  # VsCode
+	mkdir "/home/$user/.config/vivaldi/" -p   # Vivaldi
+	rm -rf "/home/$user/.config/fish"
+	stow -n --verbose=1 -t "/home/$user" --dotfiles *
+	cd "/home/$user/dot/root"
 	stow -n --verbose=1 -t / *
 }
 
 x11_pkg(){
 	pacman -S feh xdotool xclip
 	paru alacritty-smooth-cursor-git || log 3 "failed to download alacritty-smooth-cursor"
+	cd "/home/$user/dot/extra/dwm" && make clean install || log 4 "fail to compile dwm"
+	cd "/home/$user/dot/extra/st" && make clean install || log 4 "fail to compile st"
 }
 
 my_package(){
-	cd ~/dot/extra/dwm && make clean install || log 4 "fail to compile dwm"
-	cd ~/dot/extra/st/ && make clean install || log 4 "fail to compile dwm"
 	log 1 "Install my package..."
-	pacman -S base-devel zip unzip tar ntfs-3g paru xorg xorg-xinit fcitx5-im fcitx5-rime fcitx5-configtool acpi dunst fastfetch vivaldi npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick rofi ouch tlp btop arch-install-scripts sudo syncthing man-pages-zh_cn openssh --needed
+	pacman -S base-devel zip unzip tar ntfs-3g paru xorg xorg-xinit fcitx5-im fcitx5-rime fcitx5-configtool acpi dunst fastfetch vivaldi npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick keyd rofi ouch tlp btop arch-install-scripts sudo syncthing man-pages-zh_cn openssh --needed
 	read -p "Do you want to install X11 pkgs?(y/n)" flag
 	if [[ "$flag" == "y" ]]; then
 		x11_pkg
 	fi
+	systemctl enable keyd --now
 }
 
 init() {
@@ -137,7 +142,7 @@ while getopts ":d" opt; do
 done
 
 init
-config_file
+# config_file
 create_link
-necessary
-my_package
+# necessary
+# my_package

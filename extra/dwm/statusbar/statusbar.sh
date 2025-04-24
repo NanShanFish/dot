@@ -26,20 +26,20 @@ refresh() {
 	# if [ -z "$_vol_" ] ; then
 	# 	return
 	# fi
-	if [ $_bat_ -lt 33 ]; then
+	if [ $_bat_ -lt 15 ]; then
 		_bat_clr_="#f38ba8"
-	elif [ $_bat_ -lt 66 ]; then
+	elif [ $_bat_ -lt 30 ]; then
 		_bat_clr_="#f9e2af"
 	else
-		_bat_clr_="#bac2de"
+		_bat_clr_="#89b4fa"
 	fi
 	_bat="^sbat^^c$_bat_clr_^[󰂁 $_bat_%]"
-	_date="^sdate^^c#89b4fa^[󰃯 $_date_]"
-	_per="^sper^^c#94e2d5^[  $_per_]"
+	_date="^sdate^^c#89dceb^[󰃯 $_date_]"
+	_per="^sper^^c#a6e3a1^[  $_per_]"
 	_vol="^svol^^c$_vol_clr_^[ $_vol_]"
-	_light="^slight^^c#f5c2e7^[ $_light_]"
+	_light="^slight^^c#fab387^[ $_light_]"
 	_wifi="^swifi^^c$_wifi_clr_^[ $_wifi_]"
-	# echo "$_wifi $_light $_vol $_date $_per $_bat" >> $DWM/statusbar_1/temp
+	# echo "$_wifi $_light $_vol $_date $_per $_bat" >> $DWM/statusbar/tmp
 	xsetroot -name "$_wifi $_light $_vol $_per $_date $_bat"
 }
 

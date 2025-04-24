@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 update() {
     _vol_=$(pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print $5}')
 	if [ -z "$_vol_" ] ; then
 		exit
 	fi
-    _vol_clr_="#a6e3a1"
+    _vol_clr_="#f9e2af"
     if pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes'; then
         _vol_clr_="#766c64"
     fi

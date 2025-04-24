@@ -1,1 +1,1 @@
-../../../../home/scr/scr/vol.sh
+../../../../home/bin/scr/vol.sh

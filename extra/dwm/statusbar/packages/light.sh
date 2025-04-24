@@ -1,1 +1,1 @@
-../../../../home/scr/scr/light.sh
+../../../../home/bin/scr/light.sh

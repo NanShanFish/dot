@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 KERNELS="linux linux-lts linux-zen"
 kernel_running=$(uname -r | sed 's/-lts//; s/-arch1-1//; s/-zen//;')
 kernel_installed=$(pacman -Q --color never $KERNELS 2> /dev/null | awk '{print $2}') # no quotes on $KERNELS

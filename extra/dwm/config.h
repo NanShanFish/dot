@@ -202,6 +202,7 @@ static Key keys[] = {
     { MODKEY,              XK_m,      spawn, SHCMD("~/scr/rofi.sh") },                                                    /* super m          | 自定义脚本             */
     { MODKEY|ShiftMask,    XK_q,      spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')") },           /* super shift q    | 选中某个窗口并强制kill */
     { MODKEY,              XK_n,      togglescratch, SHCMD("st -t scratchpad -g 160x50 -e bash -c 'tmux has-session -t spad && tmux attach -t spad || tmux new-session -s spad'") },                                /* super n          | 打开便携终端 scratchpad*/
+    { 0,                   XK_F4,         		    spawn, SHCMD("flameshot gui") },                               /* flameshot        | 截图                   */
     { 0,                   XF86XK_AudioLowerVolume,         spawn, SHCMD("~/scr/vol.sh D 1") },                    /* 音量减按键       | 音量减                 */
     { 0,                   XF86XK_AudioRaiseVolume,         spawn, SHCMD("~/scr/vol.sh U 1") },                    /* 音量加按键       | 音量加                 */
     { 0,                   XF86XK_AudioMute,                spawn, SHCMD("~/scr/vol.sh R 1") },                    /* 静音按键         | 静音                   */
