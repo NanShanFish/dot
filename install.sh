@@ -40,14 +40,31 @@ config_file(){
 
 	log 0 "Init hostname hosts..."
 	echo "$hostname" > /etc/hostname
-	echo -e "127.0.0.1 localhost\n::1   localhost\n127.0.0.1 $hostname.localdomain  $hostname" >> /etc/hosts
+	cat <<EOF >> /etc/hosts
+127.0.0.1 localhost
+::1   localhost
+127.0.0.1 $hostname.localdomain  $hostname
+EOF
 
 	log 0 "Add archlinuxcn mirror..."
-	echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-	echo -e "ILoveCandy\nColor\n[archlinuxcn]\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf
+	cat <<EOF > /etc/pacman.d/mirrorlist
+Server = http://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch
+Server = https://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch
+Server = http://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch
+EOF
+	cat <<EOF >> /etc/pacman.conf
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch
+EOF
 
 	log 0 "Add IM enviroment"
-	echo -e "GTK_IM_MODULE=fcitx\nQT_IM_MODULE=fcitx\nXMODIFIERS=@im=fcitx\nSDL_IM_MODULE=fcitx" > /etc/environment
+	cat <<EOF > /etc/environment
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+EOF
 }
 
 necessary(){
@@ -80,7 +97,7 @@ create_link() {
 	mkdir -p "/home/$user/.local/bin"
 	pacman -S stow --needed || log 4 "fail to download stow"
 	cd "/home/$user/dot/home"
-    mkdir "/home/$user/.config/Code/User" -p  # VsCode
+	mkdir "/home/$user/.config/Code/User" -p  # VsCode
 	mkdir "/home/$user/.config/vivaldi/" -p   # Vivaldi
 	rm -rf "/home/$user/.config/fish"
 	stow -n --verbose=1 -t "/home/$user" --dotfiles *
@@ -97,7 +114,7 @@ x11_pkg(){
 
 my_package(){
 	log 1 "Install my package..."
-	pacman -S base-devel zip unzip tar ntfs-3g paru xorg xorg-xinit fcitx5-im fcitx5-rime fcitx5-configtool acpi dunst fastfetch vivaldi npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick keyd rofi ouch tlp btop arch-install-scripts sudo syncthing man-pages-zh_cn openssh --needed
+	pacman -S base-devel zip unzip tar paru fastfetch npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick rofi ouch acpi btop arch-install-scripts man-pages-zh_cn openssh --needed
 	read -p "Do you want to install X11 pkgs?(y/n)" flag
 	if [[ "$flag" == "y" ]]; then
 		x11_pkg
@@ -142,7 +159,7 @@ while getopts ":d" opt; do
 done
 
 init
-# config_file
+config_file
 create_link
-# necessary
-# my_package
+necessary
+my_package

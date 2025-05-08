@@ -24,12 +24,15 @@ if status --is-login; and status --is-interactive
 end
 
 ##  ALIAS  ##
-#alias G='git'
-alias lG='lazygit'
+alias g='git'
 alias os='fastfetch'
 alias open='xdg-open'
 alias df="df -h -x tmpfs -x efivarfs | awk '!/^dev/'"
-alias ta="tmux a"
+alias ta="tmux a || tmux"
+alias cin="xclip -selection clipboard -in"
+alias cout="xclip -selection clipboard -out"
+alias lzg='lazygit'
+alias lzd="lazydocker"
 
 ###  ENVIRONMENT VARIABLES  ###
 set -Ux EDITOR /bin/nvim
