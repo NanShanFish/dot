@@ -1,0 +1,43 @@
+[colors.primary]
+background = "{{ base }}"
+foreground = "{{ text }}"
+
+[colors.normal]
+black = "{{ black }}"
+red = "{{ red }}"
+green = "{{ green }}"
+yellow = "{{ yellow }}"
+blue = "{{ blue }}"
+magenta = "{{ magenta }}"
+cyan = "{{ cyan }}"
+white = "{{ white }}"
+
+[colors.bright]
+black = "{{ bri_black }}"
+red = "{{ bri_red }}"
+green = "{{ bri_green }}"
+yellow = "{{ bri_yellow }}"
+blue = "{{ bri_blue }}"
+magenta = "{{ bri_magenta }}"
+cyan = "{{ bri_cyan }}"
+white = "{{ bri_white }}"
+
+# [colors.cursor]
+# text = "#1e1e2e"
+# cursor = "#f5e0dc"
+
+[colors.search.matches]
+foreground = "{{ base }}"
+background = "{{ bri_white }}"
+
+[colors.search.focused_match]
+foreground = "{{ base }}"
+background = "{{ bri_green }}"
+
+[colors.hints.start]
+foreground = "{{ base }}"
+background = "{{ bri_yellow }}"
+
+[colors.hints.end]
+foreground = "{{ base }}"
+background = "{{ bri_white }}"

@@ -251,31 +251,31 @@ float alphaUnfocused = 1;
 
 static const char *colorname[] = {
 	/* 8 normal colors */
-	[0] = "#51576d", /* black   */
-	[1] = "#e78284", /* red     */
-	[2] = "#a6d189", /* green   */
-	[3] = "#e5c890", /* yellow  */
-	[4] = "#8caaee", /* blue    */
-	[5] = "#f4b8e4", /* magenta */
-	[6] = "#81c8be", /* cyan    */
-	[7] = "#b5bfe2", /* white   */
+	[0] = "{{ black }}", /* black   */
+	[1] = "{{ red }}", /* red     */
+	[2] = "{{ green }}", /* green   */
+	[3] = "{{ yellow }}", /* yellow  */
+	[4] = "{{ blue }}", /* blue    */
+	[5] = "{{ magenta }}", /* magenta */
+	[6] = "{{ cyan }}", /* cyan    */
+	[7] = "{{ white }}", /* white   */
 
 	/* 8 bright colors */
-	[8]  = "#626880",
-	[9]  = "#e78284",
-	[10] = "#a6d189",
-	[11] = "#e5c890",
-	[12] = "#8caaee",
-	[13] = "#f4b8e4",
-	[14] = "#81c8be",
-	[15] = "#a5adce",
+	[8]  = "{{ bri_black }}",
+	[9]  = "{{ bri_red }}",
+	[10] = "{{ bri_green }}",
+	[11] = "{{ bri_yellow }}",
+	[12] = "{{ bri_blue }}",
+	[13] = "{{ bri_magenta }}",
+	[14] = "{{ bri_cyan }}",
+	[15] = "{{ bri_white }}",
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	[256] = "#dad9d9", /* 256 -> cursor */
 	"#53446e", /* 257 -> rev cursor */
-    "#c6d0f5", /* 258 -> foreground */
-    "#303446", /* 259 -> background */
-    "#303446", /* 260 -> background unfocused */
+    "{{ text }}", /* 258 -> foreground */
+    "{{ base }}", /* 259 -> background */
+    "{{ base }}", /* 260 -> background unfocused */
 	"#555555", /* 261 -> visual bell */
 };
 

@@ -61,7 +61,7 @@ EOF
 	log 0 "Add IM enviroment"
 	cat <<EOF > /etc/environment
 GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
+QT_IM_MODULE="wayland;fcitx;ibus"
 XMODIFIERS=@im=fcitx
 SDL_IM_MODULE=fcitx
 EOF
