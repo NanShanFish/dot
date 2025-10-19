@@ -1,9 +1,15 @@
 #!/bin/bash
 
-creat-file(){
+create-file(){
     doc_path="$(realpath $XDG_DOCUMENTS_DIR)"
     d_file="$doc_path/notes/2-daily/$d_file.md"
-    test -e "$d_file" || cp "$doc_path/notes/template/Journey.md" "$d_file"
+    if [[ ! -e "$d_file" ]]; then
+        daily_dir=$(dirname $d_file)
+        if [[ ! -d "$daily_dir" ]]; then
+            mkdir -p "$daily_dir"
+        fi
+        cp "$doc_path/notes/template/Journey.md" "$d_file"
+    fi
 }
 
 helpfunc() {
@@ -41,7 +47,7 @@ else
     exit 1
 fi
 
-creat-file
+create-file
 cd $XDG_DOCUMENTS_DIR/notes
 if [ "$1" = "rofi" ]; then
     alacritty -e nvim $d_file

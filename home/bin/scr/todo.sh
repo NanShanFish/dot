@@ -6,13 +6,13 @@ else
 	file=$1
 fi
 
-current_date=$(date +%Y-%m-%d)
+current_time_stamp=$(date +%s)
 
 # 读取文件并处理每一行
 while IFS= read -r line; do
 	date_str=$(echo "$line" | grep -oP '\[scheduled:: \K\d{4}-\d{1,2}-\d{2}')
 	if [ "$date_str" ]; then
-		days_diff=$(( ($(date -d "$date_str" +%s) - $(date -d "$current_date" +%s)) / 86400 ))
+		days_diff=$(( ($(date -d "$date_str" +%s) - $current_time_stamp) / 86400 ))
 		txt="后"
 		if [ $days_diff -lt 0 ]; then
 			txt="前"
@@ -42,4 +42,3 @@ while IFS= read -r line; do
 		}'
 	fi
 done < $file
-
