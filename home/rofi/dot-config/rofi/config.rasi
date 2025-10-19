@@ -1,4 +1,4 @@
-@theme "/home/shan/.config/rofi/themes/nord-oneline.rasi"
+@theme "./themes/default.rasi"
 configuration{
     modi: "run,drun,window";
     lines: 5;

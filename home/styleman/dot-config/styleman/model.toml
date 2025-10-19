@@ -1,0 +1,17 @@
+[alacritty]
+# prefix = "cp ~/.config/alacritty/theme.toml ~/.config/alacritty/theme.toml.bak"
+template = "theme.toml"
+target = "~/.config/alacritty/theme.toml"
+
+[st]
+# prefix = "cp ~/dot/extra/st/config.h ~/dot/extra/st/config.h.bak"
+template = "config.h"
+target = "~/dot/extra/st/config.h"
+
+[dwm]
+template = "config.h"
+target = "~/dot/extra/dwm/config.h"
+
+[rofi]
+template = "default.rasi"
+target = "~/.config/rofi/themes/default.rasi"

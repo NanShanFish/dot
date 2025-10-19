@@ -25,15 +25,15 @@ static const unsigned int borderalpha    = 0xdd;      /* 边框透明度 */
 static const char *fonts[]               = { "Maple Mono NF CN:style=medium:size=10"};
 
 static const char *colors[][3] = {          /* 颜色设置 ColFg, ColBg, ColBorder */
-    [SchemeNorm]      = { "#626880" , "#303446", "#626880" },
-    [SchemeSel]       = { "#a6d189" , "#303446", "#a6d189" },
-    [SchemeSelGlobal] = { "#e5c890", "#303446", "#e5c890" },
-    [SchemeHid]       = { "#626880" , "#303446", NULL },
-    [SchemeSystray]   = { NULL      , "#303446", NULL },
-    [SchemeUnderline] = { "#303446"    , "#e78284",NULL },
-    [SchemeNormTag]   = { "#b5bfe2" , "#303446", NULL },
-    [SchemeSelTag]    = { "#e78284"   , "#303446", NULL },
-    [SchemeBarEmpty]  = { NULL      , "#303446", NULL },
+    [SchemeNorm]      = { "{{ bri_black }}" , "{{ base }}", "{{ bri_black }}" },
+    [SchemeSel]       = { "{{ bri_green }}" , "{{ base }}", "{{ bri_green }}" },
+    [SchemeSelGlobal] = { "{{ yellow }}", "{{ base }}", "{{ yellow }}" },
+    [SchemeHid]       = { "{{ bri_black }}" , "{{ base }}", NULL },
+    [SchemeSystray]   = { NULL      , "{{ base }}", NULL },
+    [SchemeUnderline] = { "{{ base }}"    , "{{ red }}",NULL },
+    [SchemeNormTag]   = { "{{ white }}" , "{{ base }}", NULL },
+    [SchemeSelTag]    = { "{{ bri_red }}"   , "{{ base }}", NULL },
+    [SchemeBarEmpty]  = { NULL      , "{{ base }}", NULL },
 };
 static const unsigned int alphas[][3]    = {          /* 透明度设置 ColFg, ColBg, ColBorder */
     [SchemeNorm] = { OPAQUE, baralpha, borderalpha },

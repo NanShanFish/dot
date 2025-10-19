@@ -23,16 +23,28 @@ if status --is-login; and status --is-interactive
 	end
 end
 
-##  ALIAS  ##
-alias g='git'
-alias os='fastfetch'
-alias open='xdg-open'
-alias df="df -h -x tmpfs -x efivarfs | awk '!/^dev/'"
-alias ta="tmux a &> /dev/null || tmux"
-alias cin="xclip -selection clipboard -in"
-alias cout="xclip -selection clipboard -out"
-alias lzg='lazygit'
-alias lzd="lazydocker"
+if status is-interactive
+	# fish_add_path --append ~/.cargo/bin ~/res/aarch64-linux-musl-cross/bin ~/res/riscv64-linux-musl-cross/bin ~/res/x86_64-linux-musl-cross/bin
+	fish_add_path --append ~/.local/bin ~/.cargo/bin
+
+	##  ALIAS  ##
+	alias lt='exa -T'
+	alias g='git'
+	alias os='fastfetch'
+	alias open='xdg-open'
+	alias df="df -h -x tmpfs -x efivarfs | awk '!/^dev/'"
+	alias ta="tmux a > /dev/null || tmux"
+	alias cin="xclip -selection clipboard -in"
+	alias cout="xclip -selection clipboard -out"
+	alias lzg='lazygit'
+	alias lzd="lazydocker"
+
+	### fzf
+	set --export FZF_DEFAULT_OPTS '--bind=ctrl-j:preview-down,ctrl-k:preview-up --cycle --layout=reverse --height=90% --marker="*"'
+	bind \co '_fzf_search_directory'
+	bind \cr '_fzf_search_history'
+end
+
 
 ###  ENVIRONMENT VARIABLES  ###
 set -Ux EDITOR /bin/nvim
@@ -52,5 +64,3 @@ bind \cr '_fzf_search_history'
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 # pnpm end
-
-fish_add_path $HOME/.local/bin

@@ -4,9 +4,9 @@
 * {
     font:   "Maple Mono NF CN 11";
 
-    CLRBG:      #1d2125;
-    CLRFG:      #cdd6f4;
-    BRIRED:     #f38ba8;
+    CLRBG:      #303446;
+    CLRFG:      #c6d0f5;
+    BRIRED:     #e78284;
 
     background-color:   transparent;
     text-color:         @CLRFG;
