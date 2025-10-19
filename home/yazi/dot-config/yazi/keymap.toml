@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 prepend_keymap = [
 { on = [ "r" ], run = "rename --cursor=end", desc = "Rename" },
 { on = [ "<C-r>" ], run = "redo", desc = "Redo"},

@@ -123,11 +123,7 @@ my_package(){
 }
 
 init() {
-	RED="\033[31m"
-	GREEN="\033[32m"
-	YELLOW="\033[33m"
-	NORMAL="\033[0m"
-	MAGENTA="\033[35m"
+    source ./home/bin/scr/color.sh
 
 	if [[ -z $DEBUG && "$EUID" -ne 0 ]]; then
 		log 4 "Please run this script as root."
