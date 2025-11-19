@@ -24,8 +24,7 @@ if status --is-login; and status --is-interactive
 end
 
 if status is-interactive
-	# fish_add_path --append ~/.cargo/bin ~/res/aarch64-linux-musl-cross/bin ~/res/riscv64-linux-musl-cross/bin ~/res/x86_64-linux-musl-cross/bin
-	fish_add_path --append ~/.local/bin ~/.cargo/bin
+	fish_add_path --append ~/.local/bin ~/.cargo/bin ~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/
 
 	##  ALIAS  ##
 	alias lt='exa -T'
@@ -54,7 +53,8 @@ set -Ux XDG_DOCUMENTS_DIR "$HOME/doc"
 set -Ux XDG_CONFIG_HOME "$HOME/.config"      # analogous to /etc
 set -Ux XDG_CACHE_HOME "$HOME/.cache"        # analogous to /var/cache
 set -Ux XDG_DATA_HOME "$HOME/.local/share"   # analogous to /usr/share
-set -Ux DWM "$HOME/dot/extra/dwm"
+set -gx LANG "zh_CN.UTF-8"
+# set -Ux DWM "$HOME/dot/extra/dwm"
 
 ### fzf
 set --export FZF_DEFAULT_OPTS '--bind=ctrl-j:preview-down,ctrl-k:preview-up --cycle --layout=reverse --height=90% --marker="*"'
@@ -64,3 +64,4 @@ bind \cr '_fzf_search_history'
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 # pnpm end
+

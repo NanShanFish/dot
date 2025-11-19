@@ -1,5 +1,5 @@
 import sys
-from zhdate import ZhDate
+from zhdate import ZhDate # pyright: ignore[reportMissingTypeStubs]
 from datetime import datetime
 import re
 import os
@@ -19,47 +19,53 @@ def get_file_hash(filename: str):
     except FileNotFoundError:
         return None
 
-if len(sys.argv) < 3:
-    quit_with("not enough arguments. Usage: script.py <input_file> <output_file>")
+def parse_event_file(input_file_path: str) -> list[tuple[str, datetime]]:
+    if not os.path.exists(input_file_path):
+        quit_with("invalid file path")
 
-input_file = sys.argv[1]
-output_file = sys.argv[2]
-if not os.path.exists(input_file):
-    quit_with("invalid file path")
+    now = datetime.now()
 
-now = datetime.now()
+    DATE_PATTERN = re.compile(r'^([*-])\s*(.*?)\s*(\d+),(\d+)$')
 
-DATE_PATTERN = r'^([*-])\s*(.*?)\s*(\d+),(\d+)$'
+    event_list: list[tuple[str, datetime]] = []
 
+    with open(input_file_path, encoding='utf-8') as birth_file:
+        for line in birth_file:
+            match = re.match(DATE_PATTERN, line)
+            if not match: continue
+            groups = match.groups()
+            month = int(groups[2])
+            day = int(groups[3])
+            if groups[0] == '-':
+                time = ZhDate(now.year, month, day).to_datetime()
+                if time < now:
+                    time = ZhDate(now.year + 1, month, day).to_datetime()
+            else:
+                time = datetime(now.year, month, day)
+                if time < now:
+                    time = datetime(now.year + 1, month, day)
+            event_list.append((groups[1], time))
+    return event_list
 
-birth_list: list[tuple[str, datetime]] = []
+if __name__ == "__main__":
 
-with open(input_file, encoding='utf-8') as birth_file:
-    for line in birth_file:
-        match = re.match(DATE_PATTERN, line)
-        if not match: continue
-        groups = match.groups()
-        month = int(groups[2])
-        day = int(groups[3])
-        if groups[0] == '-':
-            time = ZhDate(now.year, month, day).to_datetime()
-            if time < now:
-                time = ZhDate(now.year + 1, month, day).to_datetime()
-        else:
-            time = datetime(now.year, month, day)
-            if time < now:
-                time = datetime(now.year + 1, month, day)
-        birth_list.append((groups[1], time))
+    if len(sys.argv) < 3:
+        quit_with("not enough arguments. Usage: script.py <input_file> <output_file>")
 
-birth_list.sort(key=lambda x: x[1])
-new_content = '\n'.join([ "- [ ] 📅 {}-{:02}-{:02} {}".format(birth.year, birth.month, birth.day, event) for (event, birth) in birth_list ])
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
 
-new_content_hash = hashlib.sha256(new_content.encode('utf-8')).hexdigest()
-old_file_hash = get_file_hash(output_file)
+    event_list = parse_event_file(input_file)
+    event_list.sort(key=lambda x: x[1])
+    new_content = '\n'.join([ "- [ ] 📅 {}-{:02}-{:02} {}".format(birth.year, birth.month, birth.day, event) for (event, birth) in event_list ])
 
-if old_file_hash != new_content_hash:
-    with open(output_file, mode = 'w', encoding='utf-8') as of:
-        of.write(new_content)
-    print("Complete: update success")
-else:
-    print("Complete: dont need update")
+    new_content_hash = hashlib.sha256(new_content.encode('utf-8')).hexdigest()
+    old_file_hash = get_file_hash(output_file)
+
+    if old_file_hash != new_content_hash:
+        with open(output_file, mode = 'w', encoding='utf-8') as of:
+            _ = of.write(new_content)
+        print("Complete: update success")
+    else:
+        print("Complete: dont need update")
+

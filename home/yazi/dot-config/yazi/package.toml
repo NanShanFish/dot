@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "ce6fb75"
-hash = "ed6c185514109d7c5463f609282b220c"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "Ape/smart-enter"
@@ -10,10 +10,10 @@ hash = "43eb1a1f2291795fb5b0b2ce1206ebee"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "5186af7"
-hash = "2391805528b59d562a51f9b33f4a8236"
+rev = "9a52857"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "b929df6"
-hash = "2ac87e1b3a61f5887472899e86535d29"
+rev = "f9ae9f2"
+hash = "5dda92e60fca4f206874ee187b3dfb67"
