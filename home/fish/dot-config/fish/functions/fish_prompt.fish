@@ -56,5 +56,5 @@ function fish_prompt --description 'Write out the prompt'
     else
         set_color red
     end
-    echo -n -s "> " (set_color normal)
+    echo -n -s "% " (set_color normal)
 end

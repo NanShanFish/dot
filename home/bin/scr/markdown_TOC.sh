@@ -73,20 +73,16 @@ process_input() {
         next
     }
     /^#+ / && (in_codeblock == 0) {
-        line = $0
-        sub(/# /, "", line)
-        gsub(/#/, "\t", line)
-        result = format_str
-        gsub(/%t/, line, result)
-        print result
+        gsub(/# /, "#", $0)
+        print $0
         next
     }
-    ' 
+    '
 }
 
 # 执行处理
 if [ "$USE_STDIN" = true ]; then
-    process_input | "$DIR"/indent_tree.sh -c $'\t'
+    process_input | "$DIR"/indent_tree.sh -c '#'
 else
-    process_input < "$INPUT_FILE" | "$DIR"/indent_tree.sh -c $'\t' -t "$FNAME"
+    process_input < "$INPUT_FILE" | "$DIR"/indent_tree.sh -c '#' -t "$FNAME"
 fi
