@@ -27,8 +27,8 @@ function _fzf_search_directory --description "Search the current directory. Repl
         set -f token_dir "$(path dirname $unescaped_exp_token)"
         set -f token_file $(path basename $unescaped_exp_token)
         if test -d $token_dir
-            set --prepend fzf_arguments --prompt="File> " --query="$token_file" --preview='_fzf_preview_file {}'
-            set -f file_paths_selected ($fd_cmd --base-directory=$token_dir 2>/dev/null | _fzf_wrapper $fzf_arguments)
+            set --prepend fzf_arguments --prompt="File> " --query="$token_file" --preview="_fzf_preview_file $token_dir/{}"
+            set -f file_paths_selected "$token_dir/"($fd_cmd --base-directory=$token_dir 2>/dev/null | _fzf_wrapper $fzf_arguments)
         else
             set --prepend fzf_arguments --prompt="File> " --query="$unescaped_exp_token" --preview='_fzf_preview_file {}'
             set -f file_paths_selected ($fd_cmd 2>/dev/null | _fzf_wrapper $fzf_arguments)

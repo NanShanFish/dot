@@ -1,0 +1,12 @@
+[Unit]
+Description=Clean trash direcotry every month
+Requires=cleanup-old-files.service
+After=multi-user.target
+
+[Timer]
+OnCalendar=*-*-1 02:00:00
+Persistent=true
+RandomizedDelaySec=1800
+
+[Install]
+WantedBy=timers.target

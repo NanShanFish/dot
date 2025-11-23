@@ -1,0 +1,12 @@
+[Unit]
+Description=Clean trash direcotry every month
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/cleanup-old-files.sh
+User=root
+CPUQuota=50%
+MemoryHigh=400M
+
+[Install]
+WantedBy=multi-user.target
