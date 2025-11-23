@@ -1,6 +1,6 @@
 function restore
     if test (count $argv) -eq 0
-        set -f restore_fzf_opts "--delimiter=\t" "--with-nth=1" "--preview-window=50%" --preview='__restore_preview {2}' "--multi"
+        set -f restore_fzf_opts "--delimiter=\t" "--with-nth=1" "--preview-window=50%" --preview="__restore_preview $TRASH/{2}" "--multi"
         set -f items (fd --base-directory="$TRASH" --max-depth=1 | awk '{ orig=$0; gsub(/%%/, "/", $0); print $0 "\t" orig }'| _fzf_wrapper $restore_fzf_opts)
     else
         set -f items (echo $argv | awk '{ orig=$0; gsub(/%%/, "/", $0); print $0 "\t" orig }')

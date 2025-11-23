@@ -1,3 +1,3 @@
 function df
-    df -h -x tmpfs -x efivarfs | awk '!/^dev/'
+    command df -h -x tmpfs -x efivarfs | sed '/^dev/d; /^none/d'
 end
