@@ -9,6 +9,7 @@ set -Ux XDG_DOWNLOAD_DIR "$HOME/dls"
 set -Ux XDG_DOCUMENTS_DIR "$HOME/doc"
 set -gx LANG "zh_CN.UTF-8"
 # set -Ux DWM "$HOME/dot/extra/dwm"
+set -Ux TRASH "$HOME/.local/trash"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
