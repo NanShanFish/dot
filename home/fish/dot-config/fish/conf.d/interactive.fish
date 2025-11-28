@@ -23,7 +23,6 @@ if status is-interactive
 
 	##  ALIAS  ##
 	alias lt='exa -T'
-	alias g='git'
 	alias os='fastfetch'
 	alias open='xdg-open'
 	alias ta="tmux a > /dev/null || tmux"
@@ -31,11 +30,12 @@ if status is-interactive
 	alias cout="xclip -selection clipboard -out"
 	alias lzg='lazygit'
 	alias lzd="lazydocker"
+    abbr cp "cpg -g"
+    abbr mv "mvg -g"
 
     ### fzf
     set --export FZF_DEFAULT_OPTS '--bind=ctrl-j:preview-down,ctrl-k:preview-up --cycle --layout=reverse --height=90% --marker="*"'
     bind \co '_fzf_search_directory'
     bind \cr '_fzf_search_history'
     bind \t '_fzf_complete'
-    set -U fzf_fd_opts "--follow" "--max-depth=5" "--hidden"
 end

@@ -12,5 +12,5 @@ set -gx LANG "zh_CN.UTF-8"
 set -Ux TRASH "$HOME/.local/trash"
 
 # pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -Ux PNPM_HOME "$HOME/.local/share/pnpm"
 # pnpm end

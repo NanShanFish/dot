@@ -2,6 +2,7 @@
 
 use_color=true
 use_html=false
+DIR=$(dirname $0)
 
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -16,7 +17,7 @@ while [ $# -gt 0 ]; do
 done
 
 if [ "$use_color" = true ]; then
-    source ./color.sh
+    source $DIR/color.sh
 else
     BLUE=""
     NORMAL=""

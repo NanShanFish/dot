@@ -2,10 +2,10 @@ function _fzf_search_directory --description "Search the current directory. Repl
     # Directly use fd binary to avoid output buffering delay caused by a fd alias, if any.
     # Debian-based distros install fd as fdfind and the fd package is something else, so
     # check for fdfind first. Fall back to "fd" for a clear error message.
-    set -f fd_cmd (command -v fdfind || command -v fd  || echo "fd")
-    set -f --append fd_cmd --color=always $fzf_fd_opts
+    set -f fd_cmd (command -v fdfind || command -v fd)
+    set -f --append fd_cmd --color=always "--follow" "--max-depth=5" "--hidden"
 
-    set -f fzf_arguments --multi --ansi $fzf_directory_opts
+    set -f fzf_arguments --scheme=path --multi --ansi --prompt="File> " $fzf_directory_opts
     set -f token (commandline --current-token)
     # expand any variables or leading tilde (~) in the token
     set -f expanded_token (eval echo -- $token)
@@ -27,10 +27,13 @@ function _fzf_search_directory --description "Search the current directory. Repl
         set -f token_dir "$(path dirname $unescaped_exp_token)"
         set -f token_file $(path basename $unescaped_exp_token)
         if test -d $token_dir
-            set --prepend fzf_arguments --prompt="File> " --query="$token_file" --preview="_fzf_preview_file $token_dir/{}"
+            set --prepend fzf_arguments --query="$token_file" --preview="_fzf_preview_file $token_dir/{}"
             set -f file_paths_selected "$token_dir/"($fd_cmd --base-directory=$token_dir 2>/dev/null | _fzf_wrapper $fzf_arguments)
+        else if string match --quiet -- "/*" $unescaped_exp_token
+            _fzf_complete
+            return
         else
-            set --prepend fzf_arguments --prompt="File> " --query="$unescaped_exp_token" --preview='_fzf_preview_file {}'
+            set --prepend fzf_arguments --query="$unescaped_exp_token" --preview='_fzf_preview_file {}'
             set -f file_paths_selected ($fd_cmd 2>/dev/null | _fzf_wrapper $fzf_arguments)
         end
     end

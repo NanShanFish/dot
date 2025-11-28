@@ -7,7 +7,7 @@ function mm
         if test -e $f
             set -f fb (string replace --all "/" "%%" (realpath $f))
             printf "\r%d/%d:%s" $cnt $total $f >&2
-            mv $f "$TRASH/$fb.$time"
+            mvg -g $f "$TRASH/$time-$fb"
             set cnt (math $cnt + 1)
         else
             set_color red; echo -e "\nERROR: $f not exists"; set_color normal

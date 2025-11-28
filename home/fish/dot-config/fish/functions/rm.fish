@@ -1,10 +1,6 @@
 function rm
-    echo "rm was forbidden"
-    read -P 'use mm instead? [y/N] ' -l confirm
-    switch $confirm
-        case y Y
-            mm $argv
-        case '*'
-            echo 'Operation canceled.'
-    end
+    set_color red
+    echo "rm was forbidden, use mm instead" >&2
+    set_color normal
+    return 2
 end

@@ -12,15 +12,28 @@ prepend_keymap = [
 { on = [ "<C-w>" ], run = "close", desc = "Close current tab"},
 { on = [ "g","m" ], run = "cd $HOME/dot", desc = "Goto dotfile dir" },
 { on = [ "g","p" ], run = "cd $HOME/proj", desc = "Goto proj dir" },
-{ on = [ "g","t" ], run = "cd $HOME/proj/cntest", desc = "Goto test dir" },
+{ on = [ "g","t" ], run = "cd $TRASH", desc = "Goto trash dir" },
 { on = [ "g","b" ], run = "cd $XDG_DOCUMENTS_DIR/books", desc = "Goto book dir" },
 { on = [ "g","d" ], run = "cd $XDG_DOWNLOAD_DIR", desc = "Goto download dir" },
 { on = [ "g","n" ], run = "cd $XDG_DOCUMENTS_DIR/notes", desc="Goto note dir" },
-{ on = [ "C","Z" ], run = "plugin ouch zip", desc="zip" },
+{ on = [ "C","Z" ], run = "plugin ouch zip", desc="Zip" },
+{ on = [ "d" ], run = """
+shell 'fish -c "mm $@"'
+""", desc="move to trash"},
+{ on = [ "U","d" ], run = """
+shell --block 'fish -c "restore"'
+""", desc="Restore file"},
 ]
-
 append_keymap = [
 { on = [ "R" ], run = "rename --cursor=before_ext", desc = "Rename before_ext" },
 { on = [ "u" ], run = "undo", desc = "Undo the last operation"},
 { on = [ "<C-a>" ], run = "select_all --state=none", desc = "Select all file on current directory"},
 ]
+
+[tasks]
+prepend_keymap = [
+{ on = [ "W" ], run = "inspect", desc="Inspect tasks" },
+{ on = [ "q" ], run = "close", desc="Quit task mgr" },
+{ on = [ "<C-c>" ], run = "cancel", desc="Cancel task" },
+]
+

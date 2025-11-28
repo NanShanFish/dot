@@ -5,5 +5,5 @@ function ra
 	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		cd -- "$cwd"
 	end
-	rm -f -- "$tmp"
+	command rm -f -- "$tmp"
 end
