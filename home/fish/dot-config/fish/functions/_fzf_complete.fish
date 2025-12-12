@@ -11,7 +11,7 @@ function _fzf_complete
             commandline --current-token --replace -- $completions" "
         end
     else
-        commandline --current-token --replace -- (printf '%s\n' $completions | _fzf_wrapper)
+        commandline --current-token --replace -- (printf '%s\n' $completions | string escape| _fzf_wrapper)
     end
 
     commandline -f repaint

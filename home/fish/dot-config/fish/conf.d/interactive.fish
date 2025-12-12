@@ -19,6 +19,7 @@ if status is-interactive
 		echo -en "\e]PFFFFFFF" #white
 		setfont /usr/share/kbd/consolefonts/iso02-12x22.psfu.gz
 		clear
+        set -gx LANG us_GB.UTF-8
     end
 
 	##  ALIAS  ##
@@ -26,12 +27,10 @@ if status is-interactive
 	alias os='fastfetch'
 	alias open='xdg-open'
 	alias ta="tmux a > /dev/null || tmux"
-	alias cin="xclip -selection clipboard -in"
-	alias cout="xclip -selection clipboard -out"
 	alias lzg='lazygit'
 	alias lzd="lazydocker"
-    abbr cp "cpg -g"
-    abbr mv "mvg -g"
+    abbr cp "advcp -g"
+    abbr mv "advmv -g"
 
     ### fzf
     set --export FZF_DEFAULT_OPTS '--bind=ctrl-j:preview-down,ctrl-k:preview-up --cycle --layout=reverse --height=90% --marker="*"'

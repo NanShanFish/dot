@@ -1,4 +1,3 @@
-#include "../dwm/theme.h"
 /* See LICENSE file for copyright and license details. */
 /*
  * appearance
@@ -251,31 +250,31 @@ float alphaUnfocused = 1;
 
 static const char *colorname[] = {
 	/* 8 normal colors */
-	[0] = "#51576d", /* black   */
-	[1] = "#e78284", /* red     */
-	[2] = "#a6d189", /* green   */
-	[3] = "#e5c890", /* yellow  */
-	[4] = "#8caaee", /* blue    */
-	[5] = "#f4b8e4", /* magenta */
-	[6] = "#81c8be", /* cyan    */
-	[7] = "#b5bfe2", /* white   */
+	[0] = "#32344a", /* black   */
+	[1] = "#f7768e", /* red     */
+	[2] = "#9ece6a", /* green   */
+	[3] = "#e0af68", /* yellow  */
+	[4] = "#7aa2f7", /* blue    */
+	[5] = "#ad8ee6", /* magenta */
+	[6] = "#449dab", /* cyan    */
+	[7] = "#787c99", /* white   */
 
 	/* 8 bright colors */
-	[8]  = "#626880",
-	[9]  = "#e78284",
-	[10] = "#a6d189",
-	[11] = "#e5c890",
-	[12] = "#8caaee",
-	[13] = "#f4b8e4",
-	[14] = "#81c8be",
-	[15] = "#a5adce",
+	[8]  = "#444b6a",
+	[9]  = "#ff7a93",
+	[10] = "#b9f27c",
+	[11] = "#ff966c",
+	[12] = "#7da6ff",
+	[13] = "#bb9af7",
+	[14] = "#0db9d7",
+	[15] = "#acb0d0",
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	[256] = "#dad9d9", /* 256 -> cursor */
 	"#53446e", /* 257 -> rev cursor */
-    "#c6d0f5", /* 258 -> foreground */
-    "#303446", /* 259 -> background */
-    "#303446", /* 260 -> background unfocused */
+    "#a9b1d6", /* 258 -> foreground */
+    "#222436", /* 259 -> background */
+    "#222436", /* 260 -> background unfocused */
 	"#555555", /* 261 -> visual bell */
 };
 

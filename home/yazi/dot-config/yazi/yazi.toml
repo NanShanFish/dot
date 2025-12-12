@@ -24,7 +24,7 @@ vscode = [
 	{ run = 'code "$@"', desc = "open with vscode", for = "unix"},
 ]
 play = [
-	{ run = 'vlc "$1"', desc = "use vlc play", for = "unix"},
+	{ run = 'mpv "$1"', desc = "use mpv play", for = "unix"},
 ]
 img_play = [
 	{ run = 'feh "$1"', desc = "play in feh", for = "unix" }

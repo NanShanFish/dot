@@ -9,7 +9,7 @@ configuration{
     display-drun: "Apps";
     kb-remove-to-eol: "";
     kb-accept-entry: "Return,KP_Enter";
-    kb-row-up: "Control+k";
-    kb-row-down: "Control+j";
+    kb-row-up: "Control+p";
+    kb-row-down: "Control+n";
     kb-cancel: "Escape,Control+q";
 }

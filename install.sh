@@ -1,4 +1,6 @@
 #!/bin/bash
+AUR_HELPER=yay
+
 
 log() {
 	level=$1
@@ -107,14 +109,14 @@ create_link() {
 
 x11_pkg(){
 	pacman -S feh xdotool xclip
-	paru alacritty-smooth-cursor-git || log 3 "failed to download alacritty-smooth-cursor"
+    $AUR_HELPER alacritty-smooth-cursor-git || log 3 "failed to download alacritty-smooth-cursor"
 	cd "/home/$user/dot/extra/dwm" && make clean install || log 4 "fail to compile dwm"
 	cd "/home/$user/dot/extra/st" && make clean install || log 4 "fail to compile st"
 }
 
 my_package(){
 	log 1 "Install my package..."
-	pacman -S base-devel zip unzip tar paru fastfetch npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick rofi ouch acpi btop arch-install-scripts man-pages-zh_cn openssh --needed
+    pacman -S base-devel zip unzip tar $AUR_HELPER fastfetch npm yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick rofi ouch acpi btop arch-install-scripts man-pages-zh_cn openssh --needed
 	read -p "Do you want to install X11 pkgs?(y/n)" flag
 	if [[ "$flag" == "y" ]]; then
 		x11_pkg

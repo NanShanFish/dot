@@ -16,7 +16,7 @@ function restore
         if test -e $fpath
             echo -e "\nERROR: $fpath exists" >&2
         else
-            mvg -g --no-clobber "$TRASH/$path_and_name[2]" $fpath
+            advmv -g --no-clobber "$TRASH/$path_and_name[2]" $fpath
             set cnt (math $cnt + 1)
         end
     end
