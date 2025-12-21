@@ -6,7 +6,11 @@ if [ $# -eq 0 ]; then
 fi
 
 if [ -e "$1" ]; then
-    cd $(dirname "$1")
+    if [ -d "$1" ]; then
+        cd "$1"
+    else
+        cd $(dirname "$1")
+    fi
     nvim $(realpath "$@")
 else
     nvim "$@"
