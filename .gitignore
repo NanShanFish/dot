@@ -28,3 +28,7 @@
 
 ## bin
 /home/bin/dot-local/bin/tmux-mem-cpu-load
+
+## opencode
+node_modules
+package-lock.json

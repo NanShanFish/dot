@@ -1,7 +1,7 @@
 function _fzf_complete
     set -f token (commandline --current-token)
     set -f token (eval echo -- $token)
-    commandline --current-token --replace $token
+    commandline --current-token --replace -- $token
     set -f completions (complete -C"" | string replace -r '\t.*' '')
     if test -z "$completions"
         commandline -f repaint

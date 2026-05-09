@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "keybinds": {
+    "editor_open": "alt+e",
+    "session_child_cycle": "<leader>j",
+    "session_child_cycle_reverse": "<leader>k",
+    "input_undo": "ctrl+z",
+    "input_redo": "ctrl+r",
+    "terminal_suspend": "<leader>z"
+  }
+}

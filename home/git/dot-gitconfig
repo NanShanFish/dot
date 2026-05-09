@@ -26,3 +26,5 @@
 	tool = nvimdiff
 [difftool]
 	prompt = false
+[init]
+	defaultBranch = main
