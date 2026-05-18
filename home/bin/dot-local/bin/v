@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 if [ $# -eq 0 ]; then
-    nvim
+    $EDITOR
     exit
 fi
 
@@ -14,12 +14,12 @@ if [ -e "$1" ]; then
     proj_dir="$(git -C $target_dir rev-parse --show-toplevel 2> /dev/null)"
     if [ -z "$proj_dir" ]; then
         echo "file not in a git repo"
-        nvim "$@"
+        $EDITOR "$@"
     else
         file_path=$(realpath --relative-to=$proj_dir $1)
         cd "$proj_dir"
-        nvim "$file_path"
+        $EDITOR "$file_path"
     fi
 else
-    nvim "$@"
+    $EDITOR "$@"
 fi
