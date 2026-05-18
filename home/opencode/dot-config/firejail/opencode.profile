@@ -31,12 +31,10 @@ whitelist ${HOME}/.claude
 whitelist ${HOME}/.local/share/opencode
 whitelist ${HOME}/.local/share/oh-my-opencode
 whitelist ${HOME}/.local/state/opencode
-whitelist ${HOME}/.local/bin/
 whitelist ${HOME}/.cache/opencode
 whitelist ${HOME}/.cache/oh-my-opencode
 whitelist ${HOME}/.config/opencode
-whitelist /tmp/node*
-read-only ${HOME}/.config/opencode/opencode.profile
+# whitelist /tmp/node*
 read-only ${HOME}/.gitconfig
 read-only ${HOME}/.config/git
 include whitelist-common.inc
@@ -51,19 +49,18 @@ include whitelist-var-common.inc
 #apparmor	# if you have AppArmor running, try this one!
 caps.drop all
 # ipc-namespace
-netfilter
 #no3d	# disable 3D acceleration
 #nodvd	# disable DVD and CD devices
 #nogroups	# disable supplementary user groups
 #noinput	# disable input devices
 nonewprivs
-noroot
+# noroot
 #notv	# disable DVB TV devices
 #nou2f	# disable U2F devices
 #novideo	# disable video capture devices
-protocol inet,inet6,
+protocol inet,inet6
 #net eth0
-netfilter
+ignore net
 seccomp !chroot	# allowing chroot, just in case this is an Electron app
 #tracelog	# send blacklist violations to syslog
 
@@ -72,6 +69,7 @@ seccomp !chroot	# allowing chroot, just in case this is an Electron app
 # private-etc svc.conf,netsvc.conf,nsswitch.conf,resolv.conf,openssl,pki,npmrc,ssl,gitconfig,
 #private-lib
 # File accessed in /tmp directory:
+private-tmp
 
 #dbus-user none
 #dbus-system none

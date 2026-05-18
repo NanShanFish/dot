@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-container=lxc firejail --profile=$HOME/.config/opencode/opencode.profile \
-    --read-only=$PWD/.git \
-    --whitelist=$PWD \
-    opencode

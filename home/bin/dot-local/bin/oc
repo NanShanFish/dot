@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+SECRET_FILE="$PWD/.env"
+if [ -f "$SECRET_FILE" ]; then
+    export $(grep -v '^#' "$SECRET_FILE" | xargs)
+fi
+
+container=lxc firejail --read-only=$PWD/.git \
+    --whitelist=$PWD \
+    --blacklist=$PWD/.env* \
+    opencode --port
