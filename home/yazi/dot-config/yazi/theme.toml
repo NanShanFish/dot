@@ -4,6 +4,7 @@ border_symbol = " "
 [status]
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
+
 [flavor]
 use = "catppuccin-mocha"
 dark = "catppuccin-mocha"

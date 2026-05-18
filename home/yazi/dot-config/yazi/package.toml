@@ -5,15 +5,15 @@ hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "Ape/smart-enter"
-rev = "eff8665"
-hash = "dfe8be84be3a3d5d42c38d0a6d74f206"
+rev = "778839f"
+hash = "7429078f60e02543c8b7b9213c2b22d3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "babfd0f"
-hash = "4c0260feb50ea2437380690ffc241da7"
+rev = "5d5c480"
+hash = "9c7987da2d2a2120dac33abb64132004"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "f9ae9f2"
-hash = "5dda92e60fca4f206874ee187b3dfb67"
+rev = "54ab389"
+hash = "7dfe41c9c3d9be76da8a844263d0bbed"
