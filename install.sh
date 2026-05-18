@@ -1,6 +1,8 @@
 #!/bin/bash
 AUR_HELPER=yay
 
+SCRIPT_PATH="$0"
+CURRENT_DIR="$(dirname $SCRIPT_PATH)"
 
 log() {
 	level=$1
@@ -98,20 +100,16 @@ create_link() {
 	mkdir -p "/home/$user/.config"
 	mkdir -p "/home/$user/.local/bin"
 	pacman -S stow --needed || log 4 "fail to download stow"
-	cd "/home/$user/dot/home"
-	mkdir "/home/$user/.config/Code/User" -p  # VsCode
-	mkdir "/home/$user/.config/vivaldi/" -p   # Vivaldi
 	rm -rf "/home/$user/.config/fish"
-	stow -n --verbose=1 -t "/home/$user" --dotfiles *
-	cd "/home/$user/dot/root"
-	stow -n --verbose=1 -t / *
+    bash $CURRENT_DIR/stow_home.sh $user
+    bash $CURRENT_DIR/stow_root.sh
 }
 
 x11_pkg(){
 	pacman -S feh xdotool xclip
     $AUR_HELPER alacritty-smooth-cursor-git || log 3 "failed to download alacritty-smooth-cursor"
-	cd "/home/$user/dot/extra/dwm" && make clean install || log 4 "fail to compile dwm"
-	cd "/home/$user/dot/extra/st" && make clean install || log 4 "fail to compile st"
+	cd "$CURRENT_DIR/extra/dwm" && make clean install || log 4 "fail to compile dwm"
+	cd "$CURRENT_DIR/extra/st" && make clean install || log 4 "fail to compile st"
 }
 
 my_package(){
