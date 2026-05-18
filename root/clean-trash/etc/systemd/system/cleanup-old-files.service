@@ -1,12 +1,9 @@
 [Unit]
-Description=Clean trash direcotry every month
+Description=Clean trash directory every month
 
 [Service]
 Type=oneshot
+User=shan
 ExecStart=/usr/local/bin/cleanup-old-files.sh
-User=root
-CPUQuota=50%
-MemoryHigh=400M
-
-[Install]
-WantedBy=multi-user.target
+StandardOutput=append:/var/log/clean_old_files.log
+StandardError=inherit
