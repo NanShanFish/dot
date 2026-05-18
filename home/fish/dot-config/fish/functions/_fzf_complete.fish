@@ -1,21 +1,19 @@
 function _fzf_complete
-    set -f token (commandline --current-token)
-    set -f token (eval echo -- $token)
-    commandline --current-token --replace -- $token
-    set -f completions (complete -C"" | string replace -r '\t.*' '')
-    if test -z "$completions"
-        commandline -f repaint
+    set -l token (commandline --current-token)
+    set -l cmd (commandline -p)
+    set -l completions (complete --do-complete --escape "$cmd" | string split -f1 \t)
+
+    set -l num (count $completions)
+
+    set -l selected
+    if test $num -eq 0
         return
-    end
-    if test (count $completions) -eq 1
-        if string match --quiet -- "*/" $completions[1]
-            commandline --current-token --replace -- $completions
-        else
-            commandline --current-token --replace -- $completions" "
-        end
+    else if test $num -eq 1
+        set selected $completions[1]
     else
-        commandline --current-token --replace -- (printf '%s\n' $completions | string escape| _fzf_wrapper --query "$token")
+        set selected (printf "%s\n" $completions | _fzf_wrapper --query "$token" )
     end
 
+    commandline --replace --current-token $selected
     commandline -f repaint
 end

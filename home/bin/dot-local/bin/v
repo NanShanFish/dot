@@ -7,11 +7,19 @@ fi
 
 if [ -e "$1" ]; then
     if [ -d "$1" ]; then
-        cd "$1"
+        target_dir="$1"
     else
-        cd $(dirname "$1")
+        target_dir="$(dirname $1)"
     fi
-    nvim $(realpath "$@")
+    proj_dir="$(git -C $target_dir rev-parse --show-toplevel 2> /dev/null)"
+    if [ -z "$proj_dir" ]; then
+        echo "file not in a git repo"
+        nvim "$@"
+    else
+        file_path=$(realpath --relative-to=$proj_dir $1)
+        cd "$proj_dir"
+        nvim "$file_path"
+    fi
 else
     nvim "$@"
 fi
