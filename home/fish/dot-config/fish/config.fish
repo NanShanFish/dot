@@ -14,3 +14,4 @@ set -gx LANG "zh_CN.UTF-8"
 # pnpm
 set -Ux PNPM_HOME "$HOME/.local/share/pnpm"
 # pnpm end
+

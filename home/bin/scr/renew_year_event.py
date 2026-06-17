@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 from zhdate import ZhDate # pyright: ignore[reportMissingTypeStubs]
 from datetime import datetime
@@ -57,7 +58,7 @@ if __name__ == "__main__":
 
     event_list = parse_event_file(input_file)
     event_list.sort(key=lambda x: x[1])
-    new_content = '\n'.join([ "- [ ] 📅 {}-{:02}-{:02} {}".format(birth.year, birth.month, birth.day, event) for (event, birth) in event_list ])
+    new_content = '\n'.join([ "* {}\nDEADLINE: <{}-{:02}-{:02}>".format(event, birth.year, birth.month, birth.day) for (event, birth) in event_list ])
 
     new_content_hash = hashlib.sha256(new_content.encode('utf-8')).hexdigest()
     old_file_hash = get_file_hash(output_file)

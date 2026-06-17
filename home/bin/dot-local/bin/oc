@@ -1,10 +1,66 @@
 #!/usr/bin/env bash
-SECRET_FILE="$PWD/.env"
-if [ -f "$SECRET_FILE" ]; then
-    export $(grep -v '^#' "$SECRET_FILE" | xargs)
-fi
 
-container=lxc firejail --read-only=$PWD/.git \
-    --whitelist=$PWD \
-    --blacklist=$PWD/.env* \
-    opencode --port
+CURRENT_DIR="$PWD"
+
+BWRAP_ENV_ARGS=()
+OPENCODE_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --env)
+            IFS=',' read -r -a env_vars <<< "$2"
+            for var in "${env_vars[@]}"; do
+                var=$(echo "$var" | xargs)
+                if [[ -n "${!var}" ]]; then
+                    BWRAP_ENV_ARGS+=( "--setenv" "$var" "${!var}" )
+                fi
+            done
+            shift 2 # 跳过 --env 和它的参数
+            ;;
+        *)
+            OPENCODE_ARGS+=( "$1" )
+            break
+            ;;
+    esac
+done
+
+exec bwrap \
+    --ro-bind /bin /bin \
+    --ro-bind /usr/bin /usr/bin \
+    --ro-bind /lib /lib \
+    --ro-bind /lib64 /lib64 \
+    --ro-bind /usr/lib /usr/lib \
+    --ro-bind /usr/lib64 /usr/lib64 \
+    --ro-bind /usr/sbin /usr/sbin \
+    --ro-bind /usr/local /usr/local \
+    --ro-bind /usr/share /usr/share \
+    --bind $HOME/.npm $HOME/.npm \
+    --bind $HOME/.local/share/oh-my-opencode $HOME/.local/share/oh-my-opencode \
+    --bind $HOME/.local/share/opencode $HOME/.local/share/opencode \
+    --bind $HOME/.local/share/uv $HOME/.local/share/uv \
+    --bind $HOME/.local/state/opencode $HOME/.local/state/opencode \
+    --bind $HOME/.local/lib $HOME/.local/lib \
+    --bind $HOME/.cache/oh-my-opencode $HOME/.cache/oh-my-opencode \
+    --bind $HOME/.cache/opencode $HOME/.cache/opencode \
+    --bind $HOME/.config/opencode $HOME/.config/opencode \
+    --bind $HOME/dot/home/opencode $HOME/dot/home/opencode \
+    --bind-try $HOME/.cache/.bun $HOME/.cache/.bun \
+    --bind-try $HOME/.cache/bun $HOME/.cache/bun \
+    --bind-try $HOME/.cache/go-build $HOME/.cache/go-build \
+    --bind-try $HOME/.cache/matplotlib $HOME/.cache/matplotlib \
+    --bind-try $HOME/.cache/pip $HOME/.cache/pip \
+    --bind-try $HOME/.cache/uv $HOME/.cache/uv \
+    --bind-try $HOME/.rustup $HOME/.rustup \
+    --bind $PWD $PWD \
+    --ro-bind-try $PWD/.git $PWD/.git \
+    --tmpfs /tmp \
+    --dev /dev \
+    --share-net \
+    --unshare-pid \
+    --as-pid-1 \
+    --die-with-parent \
+    --proc /proc \
+    --setenv HOME "$HOME" \
+    --setenv PATH "/bin:/usr/bin:/usr/local/bin" \
+    "${BWRAP_ENV_ARGS[@]}" \
+    opencode --port 4096 "${OPENCODE_ARGS[@]}"

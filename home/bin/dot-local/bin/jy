@@ -14,7 +14,7 @@ create-file(){
         if [[ ! -d "$daily_dir" ]]; then
             mkdir -p "$daily_dir"
         fi
-        cp "$doc_path/notes/template/Journey.md" "$file_path"
+        touch "$file_path"
     fi
     cd $doc_path/notes
     if [ -z "$2" ]; then
@@ -26,13 +26,13 @@ create-file(){
 
 open() {
     if [ "$1" = "todo" ]; then
-        f="notes/2-daily/Todo/todo.md"
+        f="notes/2-daily/Todo/todo.org"
         nvim "$doc_path/$f"
         return
     elif [ -z "$1" ]; then
-        f="$(date "+notes/2-daily/%Y/%m/%Y-%m-%d.md")"
+        f="$(date "+notes/2-daily/%Y/%m/%Y-%m-%d.org")"
     else
-        f="$(ndate "$1" -f "notes/2-daily/%Y/%m/%Y-%m-%d.md")"
+        f="$(ndate "$1" -f "notes/2-daily/%Y/%m/%Y-%m-%d.org")"
     fi
 
     create-file $f $2
