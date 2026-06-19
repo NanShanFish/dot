@@ -8,4 +8,4 @@ if [ -z "$1" ]; then
     user="$USER"
 fi
 
-cd "$CURRENT_DIR/home" && stow -n --verbose=1 -t "/home/$user" --no-folding --dotfiles *
+cd "$CURRENT_DIR/home" && stow --verbose=1 -t "/home/$user" --no-folding --dotfiles *
